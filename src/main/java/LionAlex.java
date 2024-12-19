@@ -1,8 +1,6 @@
-package com.example;
-
 import java.util.List;
 
-public class LionAlex extends Lion{
+public class LionAlex extends Lion {
     public static final  String GENDER_ALEX = "Самец";
     private final Feline feline;
 
