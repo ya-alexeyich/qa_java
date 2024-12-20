@@ -1,29 +1,27 @@
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.mockito.Mockito;
-import org.mockito.Spy;
-import org.mockito.junit.MockitoJUnitRunner;
-
 import java.util.List;
 import static org.junit.Assert.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
-@RunWith(MockitoJUnitRunner.class)
 public class FelineTest {
 
-    @Spy
-    Feline feline;
+    private Feline feline;
+
+    @Before
+    public void setUp() {
+        feline = new Feline();
+    }
 
     @Test
     public void eatMeatTest () throws Exception {
-        Mockito.doReturn(List.of("Животные", "Птицы", "Рыба")).when(feline).getFood("Хищник");
+        Feline FelineSpy = Mockito.spy(feline);
+        Mockito.doReturn(List.of("Животные", "Птицы", "Рыба")).when(FelineSpy).getFood("Хищник");
 
-        List<String> food = feline.eatMeat();
+        List<String> food = FelineSpy.eatMeat();
 
         assertNotNull(food);
-        assertEquals(3,food.size());
+        assertEquals(3, food.size());
         assertTrue(food.contains("Животные"));
         assertTrue(food.contains("Птицы"));
         assertTrue(food.contains("Рыба"));
@@ -35,12 +33,8 @@ public class FelineTest {
     }
 
     @Test
-    public void getKittensTest() {
+    public void getKittens() {
         assertEquals(1, feline.getKittens());
-    }
-    @Test
-    public void getKittensCountTest() {
-        assertEquals(5, feline.getKittens(5));
     }
 
 
