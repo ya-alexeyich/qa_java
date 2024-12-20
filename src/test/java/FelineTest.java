@@ -17,7 +17,6 @@ public class FelineTest {
     public void eatMeatTest () throws Exception {
         Feline FelineSpy = Mockito.spy(feline);
         Mockito.doReturn(List.of("Животные", "Птицы", "Рыба")).when(FelineSpy).getFood("Хищник");
-
         List<String> food = FelineSpy.eatMeat();
 
         assertNotNull(food);
@@ -28,12 +27,12 @@ public class FelineTest {
     }
 
     @Test
-    public void getFamily() {
+    public void getFamilyTest() {
         assertEquals("Кошачьи", feline.getFamily());
     }
 
     @Test
-    public void getKittens() {
+    public void getKittensTest() {
         assertEquals(1, feline.getKittens());
     }
 

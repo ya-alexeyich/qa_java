@@ -7,11 +7,11 @@ import static org.junit.Assert.assertEquals;
 public class FelineParametrizedTest {
 
     private final int kittensCount;
-    private final int expected;
+    private final int expectedKittensCount;
 
-    public FelineParametrizedTest(int kittensCount, int expected) {
+    public FelineParametrizedTest(int kittensCount, int expectedKittensCount) {
         this.kittensCount = kittensCount;
-        this.expected = expected;
+        this.expectedKittensCount = expectedKittensCount;
     }
 
     @Parameterized.Parameters
@@ -25,9 +25,8 @@ public class FelineParametrizedTest {
     }
 
     @Test
-    public void getKittensByCount() {
+    public void getKittensByCountTest() {
         Feline feline = new Feline();
-        int actual = feline.getKittens(kittensCount);
-        assertEquals(expected, actual);
+        assertEquals(expectedKittensCount, feline.getKittens(kittensCount));
     }
 }
