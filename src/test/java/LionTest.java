@@ -3,9 +3,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.List;
@@ -50,6 +48,13 @@ public class LionTest {
         assertTrue(food.contains("Животные"));
         assertTrue(food.contains("Птицы"));
         assertTrue(food.contains("Рыба"));
+    }
+
+    @Test
+    public void checkExceptionByCreateLion() throws Exception {
+        exceptionRule.expect(Exception.class);
+        exceptionRule.expectMessage("Используйте допустимые значения пола животного - самец или самка");
+        lion = new Lion("Трансгендер", feline);
     }
 
 }
