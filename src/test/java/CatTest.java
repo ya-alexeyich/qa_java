@@ -9,8 +9,8 @@ import static org.mockito.Mockito.when;
 
 public class CatTest {
 
-    private Cat cat;
-    private Feline feline;
+    Cat cat;
+    Feline feline;
 
     @Before
     public void setUp() {
