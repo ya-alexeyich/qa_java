@@ -2,16 +2,14 @@ import java.util.List;
 
 public class LionAlex extends Lion {
     public static final  String GENDER_ALEX = "Самец";
-    private final Feline feline;
 
-    public LionAlex(Feline feline) throws Exception {
-        super(GENDER_ALEX, feline);
-        this.feline = feline;
+    public LionAlex(AnimalBehavior animalBehavior) throws Exception {
+        super(GENDER_ALEX, animalBehavior);
     }
 
     @Override
     public int getKittens() {
-        return feline.getKittens(0);
+        return 0;
     }
 
     public List<String> getFriends() {

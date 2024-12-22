@@ -19,7 +19,6 @@ public class FelineTest {
         Mockito.doReturn(List.of("Животные", "Птицы", "Рыба")).when(FelineSpy).getFood("Хищник");
         List<String> food = FelineSpy.eatMeat();
 
-        assertNotNull(food);
         assertEquals(3, food.size());
         assertTrue(food.contains("Животные"));
         assertTrue(food.contains("Птицы"));

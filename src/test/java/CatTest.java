@@ -28,7 +28,6 @@ public class CatTest {
         when(feline.eatMeat()).thenReturn(List.of("Животные", "Птицы", "Рыба"));
         List<String> food = cat.getFood();
 
-        assertNotNull(food);
         assertEquals(3, food.size());
         assertTrue(food.contains("Животные"));
         assertTrue(food.contains("Птицы"));

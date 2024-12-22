@@ -16,12 +16,12 @@ import static org.mockito.Mockito.when;
 public class LionTest {
 
     @Mock
-    Feline feline;
+    AnimalBehavior animalBehavior;
     Lion lion;
 
     @Before
     public void setUp() throws Exception {
-        lion = new Lion("Самка", feline);
+        lion = new Lion("Самка", animalBehavior);
     }
 
     @Rule
@@ -29,7 +29,7 @@ public class LionTest {
 
     @Test
     public void getKittensTest()  {
-        when(feline.getKittens()).thenReturn(3);
+        when(animalBehavior.getKittens()).thenReturn(3);
         assertEquals(3, lion.getKittens());
     }
 
@@ -40,10 +40,9 @@ public class LionTest {
 
     @Test
     public void getFoodTest() throws Exception {
-        when(feline.getFood("Хищник")).thenReturn(List.of("Животные", "Птицы", "Рыба"));
+        when(animalBehavior.getFood("Хищник")).thenReturn(List.of("Животные", "Птицы", "Рыба"));
         List<String> food = lion.getFood();
 
-        assertNotNull(food);
         assertEquals(3, food.size());
         assertTrue(food.contains("Животные"));
         assertTrue(food.contains("Птицы"));
@@ -51,10 +50,10 @@ public class LionTest {
     }
 
     @Test
-    public void checkExceptionByCreateLion() throws Exception {
+    public void lionIsCreateExceptionTest() throws Exception {
         exceptionRule.expect(Exception.class);
         exceptionRule.expectMessage("Используйте допустимые значения пола животного - самец или самка");
-        lion = new Lion("Трансгендер", feline);
+        lion = new Lion("Трансгендер", animalBehavior);
     }
 
 }
