@@ -20,7 +20,7 @@ public class FelineParametrizedTest {
             {0, 0},
             {1, 1},
             {2, 2},
-            {10, 10}
+            {100, 100}
         };
     }
 
