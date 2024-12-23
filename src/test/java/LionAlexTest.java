@@ -11,10 +11,9 @@ import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class LionAlexTest {
-
+    LionAlex alex;
     @Mock
     AnimalBehavior animalBehavior;
-    LionAlex alex;
 
 
     @Before

@@ -12,10 +12,10 @@ import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class LionTest {
-
+    Lion lion;
     @Mock
     AnimalBehavior animalBehavior;
-    Lion lion;
+
 
     @Before
     public void setUp() throws Exception {
@@ -45,7 +45,7 @@ public class LionTest {
     }
 
     @Test
-    public void lionIsCreateExceptionTest() throws Exception {
+    public void lionIsCreateExceptionTest() {
         Exception exception = assertThrows(
                 Exception.class,
                 () -> new Lion("Трансгендер", animalBehavior)

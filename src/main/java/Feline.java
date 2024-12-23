@@ -11,7 +11,7 @@ public class Feline extends Animal implements Predator, AnimalBehavior {
     public String getFamily() {
         return "Кошачьи";
     }
-
+    @Override
     public int getKittens() {
         return getKittens(1);
     }
@@ -22,7 +22,8 @@ public class Feline extends Animal implements Predator, AnimalBehavior {
 
     @Override
     public List<String> getFood(String animalKind) throws Exception {
-        return super.getFood(animalKind);
+//        return super.getFood(animalKind);
+        return super.getFood("Хищник");
     }
 
 }
