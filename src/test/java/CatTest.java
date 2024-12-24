@@ -3,10 +3,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
-
 import java.util.List;
 import static org.junit.Assert.*;
-import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -22,20 +20,13 @@ public class CatTest {
 
     @Test
     public void getSoundTest() {
-        assertEquals("Мяу", cat.getSound());
+        assertEquals("Кошка должна говорить Мяу","Мяу", cat.getSound());
     }
-
+    //Реализовал проверку используя один assert. Сравнивал списки.
+    //Использовал поясняющие сообщения для assert.
     @Test
     public void getFoodTest() throws Exception {;
         when(feline.eatMeat()).thenReturn(List.of("Животные", "Птицы", "Рыба"));
-        List<String> food = cat.getFood();
-
-        assertEquals(3, food.size());
-        assertTrue(food.contains("Животные"));
-        assertTrue(food.contains("Птицы"));
-        assertTrue(food.contains("Рыба"));
-
+        assertEquals("Кошка должна есть мясо",List.of("Животные", "Птицы", "Рыба"),cat.getFood());
     }
-
-
 }

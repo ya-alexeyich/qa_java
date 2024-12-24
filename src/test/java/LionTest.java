@@ -3,11 +3,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
-
 import java.util.List;
-
 import static org.junit.Assert.*;
-
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -15,7 +12,6 @@ public class LionTest {
     Lion lion;
     @Mock
     AnimalBehavior animalBehavior;
-
 
     @Before
     public void setUp() throws Exception {
@@ -25,23 +21,19 @@ public class LionTest {
     @Test
     public void getKittensTest()  {
         when(animalBehavior.getKittens()).thenReturn(3);
-        assertEquals(3, lion.getKittens());
+        assertEquals("У львицы может быть трое детей",3, lion.getKittens());
     }
 
     @Test
     public void doesHaveManeTest() {
-        assertFalse(lion.doesHaveMane());
+        assertFalse("У львицы нет гривы",lion.doesHaveMane());
     }
-
+    //Реализовал проверку используя один assert. Сравнивал списки.
+    //Использовал поясняющие сообщения для assert.
     @Test
     public void getFoodTest() throws Exception {
         when(animalBehavior.getFood("Хищник")).thenReturn(List.of("Животные", "Птицы", "Рыба"));
-        List<String> food = lion.getFood();
-
-        assertEquals(3, food.size());
-        assertTrue(food.contains("Животные"));
-        assertTrue(food.contains("Птицы"));
-        assertTrue(food.contains("Рыба"));
+        assertEquals("Львица хищник должна есть животных птиц и рыбу",List.of("Животные", "Птицы", "Рыба"),lion.getFood());
     }
 
     @Test
@@ -50,8 +42,7 @@ public class LionTest {
                 Exception.class,
                 () -> new Lion("Трансгендер", animalBehavior)
         );
-
-        assertEquals("Используйте допустимые значения пола животного - самец или самка", exception.getMessage());
+        assertEquals( "Если указать неверный гендер не появилась ошибка", "Используйте допустимые значения пола животного - самец или самка", exception.getMessage());
     }
 
 }

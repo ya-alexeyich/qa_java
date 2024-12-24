@@ -3,9 +3,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
-
 import java.util.List;
-
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.when;
 
@@ -15,7 +13,6 @@ public class LionAlexTest {
     @Mock
     AnimalBehavior animalBehavior;
 
-
     @Before
     public void setUp() throws Exception {
         alex = new LionAlex(animalBehavior);
@@ -23,36 +20,28 @@ public class LionAlexTest {
 
     @Test
     public void getKittensTest() {
-        assertEquals(0, alex.getKittens());
+        assertEquals("У Алекса не должно быть детей",0, alex.getKittens());
     }
 
     @Test
     public void getFriendsTest() {
-        List<String> list = alex.getFriends();
-        assertEquals(3,list.size());
-        assertTrue(list.contains("Марти"));
-        assertTrue(list.contains("Глория"));
-        assertTrue(list.contains("Мелман"));
+        assertEquals("У Алекса три друга Марти Глория Мелман",List.of("Марти", "Глория", "Мелман"),alex.getFriends());
     }
 
     @Test
     public void getPlaceOfLivingTest() {
-        assertEquals("Нью-Йоркский зоопарк", alex.getPlaceOfLiving());
+        assertEquals("Алекс живет в Нью-Йоркском зоопарке","Нью-Йоркский зоопарк", alex.getPlaceOfLiving());
     }
 
     @Test
     public void doesHaveManeTest() {
-        assertTrue(alex.doesHaveMane());
+        assertTrue("У Алекса  должна быть грива",alex.doesHaveMane());
     }
-
+    //Реализовал проверку используя один assert. Сравнивал списки.
+    //Использовал поясняющие сообщения для assert.
     @Test
     public void getFoodTest() throws Exception {
         when(animalBehavior.getFood("Хищник")).thenReturn(List.of("Животные", "Птицы", "Рыба"));
-        List<String> food = alex.getFood();
-
-        assertEquals(3, food.size());
-        assertTrue(food.contains("Животные"));
-        assertTrue(food.contains("Птицы"));
-        assertTrue(food.contains("Рыба"));
+        assertEquals("Алекс ест мясо",List.of("Животные", "Птицы", "Рыба"),alex.getFood());
     }
 }

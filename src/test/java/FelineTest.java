@@ -1,39 +1,29 @@
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mockito;
 import java.util.List;
 import static org.junit.Assert.*;
 
 public class FelineTest {
-
     Feline feline;
 
     @Before
     public void setUp() {
         feline = new Feline();
     }
-
+    //Моки только для зависимостей, а не для тестируемого объекта.
+    //Использовал поясняющие сообщения для assert.
     @Test
     public void eatMeatTest () throws Exception {
-        Feline felineSpy = Mockito.spy(feline);
-        Mockito.doReturn(List.of("Животные", "Птицы", "Рыба")).when(felineSpy).getFood("Хищник");
-        List<String> food = felineSpy.eatMeat();
-
-        assertEquals(3, food.size());
-        assertTrue(food.contains("Животные"));
-        assertTrue(food.contains("Птицы"));
-        assertTrue(food.contains("Рыба"));
+        assertEquals("Семейство кошачьих должно есть мясо",List.of("Животные", "Птицы", "Рыба"),feline.eatMeat());
     }
 
     @Test
     public void getFamilyTest() {
-        assertEquals("Кошачьи", feline.getFamily());
+        assertEquals("Кошки должны принадлежать семейству кошачьих","Кошачьи", feline.getFamily());
     }
 
     @Test
     public void getKittensTest() {
-        assertEquals(1, feline.getKittens());
+        assertEquals("Семейство кошачьих должно иметь ребенка",1, feline.getKittens());
     }
-
-
 }

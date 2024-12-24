@@ -1,7 +1,6 @@
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
 
@@ -14,8 +13,8 @@ public class LionParameterizedTest {
         this.sex = sex;
         this.expectedHasMane = expectedHasMane;
     }
-
-    @Parameterized.Parameters
+    //В параметризованных тестах для аннотации Parameterized.Parameters использовал аргумент name
+    @Parameterized.Parameters(name = "Наличие гривы: {0} {1}")
     public static Object[] getDataHasMane() {
         return new Object[][] {
                 {"Самец", true},

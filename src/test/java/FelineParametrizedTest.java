@@ -5,7 +5,6 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
 public class FelineParametrizedTest {
-
     private final int kittensCount;
     private final int expectedKittensCount;
 
@@ -13,8 +12,8 @@ public class FelineParametrizedTest {
         this.kittensCount = kittensCount;
         this.expectedKittensCount = expectedKittensCount;
     }
-
-    @Parameterized.Parameters
+    //В параметризованных тестах для аннотации Parameterized.Parameters использовал аргумент name
+    @Parameterized.Parameters(name = "Количество детей: {0} {1}")
     public static Object[][] getKittensByCountData() {
         return new Object[][] {
             {0, 0},
